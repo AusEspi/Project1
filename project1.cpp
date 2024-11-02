@@ -398,7 +398,7 @@ void search(Node &init, int heuristic) {    //main search algorithm
             int m = q[0].g + q[0].h; 
             int x = 0;
             for(int i = 0; i < q.size(); i++) {
-                printf("F(%d): %d ", i, q[i].g + q[i].h);//G: %d H: %d  //q[i].g, q[i].h,
+                // printf("F(%d): %d ", i, q[i].g + q[i].h);//G: %d H: %d  //q[i].g, q[i].h,
                 if(m > q[i].g + q[i].h) {
                     m = q[i].g + q[i].h;
                     x = i;
