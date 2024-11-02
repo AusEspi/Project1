@@ -21,7 +21,7 @@ vector<Node> explored;  //explored nodes
 vector<Node> q;         //queue
 Node init;              //init node
 
-void outPuzzle(char arr[][3]) {     //prints out given puzzle
+void outPuzzle(char arr[][3]) {             //prints out given puzzle
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
             printf("%c ", arr[i][j]);
@@ -31,7 +31,7 @@ void outPuzzle(char arr[][3]) {     //prints out given puzzle
     printf("\n");
 }
 
-int misplaced(char arr[][3]) {      //returns h(n) value for given puzzle state
+int misplaced(char arr[][3]) {              //returns h(n) value for given puzzle state
     int m = 0;
     int num = 0;
 
@@ -47,7 +47,7 @@ int misplaced(char arr[][3]) {      //returns h(n) value for given puzzle state
     return m;
 }
 
-int manhattan(char arr[][3]) {      //returns h(n) for given puzzle state
+int manhattan(char arr[][3]) {              //returns h(n) for given puzzle state
     int m = 0;
     int num = 0;
     int x, y = 0;
