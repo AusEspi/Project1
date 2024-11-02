@@ -4,11 +4,11 @@
 
 using namespace std;
 
-char puzzle[3][3];
-int maxS = 0;
-int exp = 0;
+char puzzle[3][3];  //init puzlle array
+int maxS = 0;       //max num of nodes in queue at any time
+int exp = 0;        //num of explored nodes
 
-struct Node {
+struct Node {   //nodes in tree
     char puzzle[3][3];
     int mov;
     int g;
@@ -17,11 +17,11 @@ struct Node {
     Node() : mov(-1), up(nullptr), down(nullptr), left(nullptr), right(nullptr) {}
 };
 
-vector<Node> explored;
-vector<Node> q;
-Node init;
+vector<Node> explored;  //explored nodes
+vector<Node> q;         //queue
+Node init;              //init node
 
-void outPuzzle(char arr[][3]) {
+void outPuzzle(char arr[][3]) {     //prints out given puzzle
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
             printf("%c ", arr[i][j]);
@@ -31,7 +31,7 @@ void outPuzzle(char arr[][3]) {
     printf("\n");
 }
 
-int misplaced(char arr[][3]) {
+int misplaced(char arr[][3]) {      //returns h(n) value for given puzzle state
     int m = 0;
     int num = 0;
 
@@ -47,7 +47,7 @@ int misplaced(char arr[][3]) {
     return m;
 }
 
-int manhattan(char arr[][3]) {
+int manhattan(char arr[][3]) {      //returns h(n) for given puzzle state
     int m = 0;
     int num = 0;
     int x, y = 0;
@@ -87,7 +87,7 @@ int manhattan(char arr[][3]) {
     return m;
 }
 
-bool move(char (&arr)[3][3], int dir) {
+bool move(char (&arr)[3][3], int dir) {     //moves blank tile in any direction for a given puzzle
     int x, y = 0;
     for(int i = 0; i < 3; i++){
         for(int j = 0; j  < 3; j++) {
@@ -138,7 +138,7 @@ bool move(char (&arr)[3][3], int dir) {
     return 1;
 }
 
-bool goal(char arr[3][3]) {
+bool goal(char arr[3][3]) {                 //checks for goal state
     int num = 0;
 
     for(int i = 0; i < 3; i++) {
@@ -153,7 +153,7 @@ bool goal(char arr[3][3]) {
     return 1;
 }
 
-bool repeat(char arr[3][3]){
+bool repeat(char arr[3][3]){                //checks queue and explored to see if given arr is a repeat
     bool t = 0;
     int n = 0;
 
@@ -207,7 +207,7 @@ bool repeat(char arr[3][3]){
     return 0;
 }
 
-void expand(Node &node, int h) {
+void expand(Node &node, int h) {            //expands given node and pushes valid children nodes to queue
     // printf("Expanding this node: \n");
     // outPuzzle(node->puzzle);
     
@@ -366,7 +366,7 @@ void expand(Node &node, int h) {
     }
 }
 
-void search(Node &init, int heuristic) {
+void search(Node &init, int heuristic) {    //main search algorithm
     q.push_back(init);
     maxS = q.size();
     while(1) {
